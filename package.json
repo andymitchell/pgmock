@@ -1,5 +1,5 @@
 {
-  "name": "pgmock",
+  "name": "@andyrmitchell/pgmock",
   "version": "1.0.2",
   "description": "In-memory Postgres for unit/E2E tests",
   "main": "dist/main.js",
@@ -16,6 +16,10 @@
   },
   "homepage": "https://stackframe-projects.github.io/pgmock",
   "scripts": {
+
+    "build_release": "npm run build_prepare && np",
+    "pkglint": "./build/publint_pipeable.sh",
+    "build_prepare": "npm run build && npm run pkglint",
     "build": "rimraf dist/ && tsup src/main.ts --dts --splitting --format esm,cjs",
     "build-dev": "npm run build -- --sourcemap",
     "build-dev:watch": "npm run build-dev -- --watch",
@@ -24,16 +28,16 @@
   "author": "Stan Wohlwend <n2d4xc@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.12.2",
-    "rimraf": "^5.0.5",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.3",
-    "jest": "*",
     "@swc/core": "*",
     "@swc/jest": "*",
     "@types/jest": "*",
+    "@types/node": "^20.12.2",
     "@types/pg": "*",
-    "pg": "*"
+    "jest": "*",
+    "pg": "*",
+    "rimraf": "^5.0.5",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
   },
   "jest": {
     "transform": {
